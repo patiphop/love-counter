@@ -1,0 +1,63 @@
+/* src/components/Counter.css */
+
+.counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid #ff69b4;
+  border-radius: 15px;
+  background: rgba(255, 105, 180, 0.1);
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+  animation: pulse 2s infinite;
+}
+
+.time-segment {
+  text-align: center;
+  color: #ff69b4;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.time-segment:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+}
+
+.number {
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #ff69b4;
+  text-shadow: 2px 2px #000;
+  font-family: 'Pacifico', cursive;
+}
+
+.label {
+  font-size: 1rem;
+  color: #ff69b4;
+  font-family: 'Pacifico', cursive;
+}
+
+.future-message {
+  font-size: 2rem;
+  color: #ff69b4;
+  text-shadow: 2px 2px #000;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 105, 180, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  }
+}
