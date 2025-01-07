@@ -13,9 +13,32 @@ const Counter = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const elapsed = currentTime - startDate;
+  const calculateElapsed = () => {
+    let elapsed = currentTime - startDate;
 
-  if (elapsed < 0) {
+    if (elapsed < 0) {
+      return null;
+    }
+
+    const milliseconds = elapsed % 1000;
+    const totalSeconds = Math.floor(elapsed / 1000);
+    const seconds = totalSeconds % 60;
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const minutes = totalMinutes % 60;
+    const totalHours = Math.floor(totalMinutes / 60);
+    const hours = totalHours % 24;
+    const totalDays = Math.floor(totalHours / 24);
+    const days = totalDays % 365;
+    const years = Math.floor(totalDays / 365);
+    const months = Math.floor((totalDays % 365) / 30); // Approximation
+
+    return { years, months, days, hours, minutes, seconds, milliseconds };
+  };
+
+  const elapsed = calculateElapsed();
+
+  // If the start date is in the future
+  if (!elapsed) {
     return (
       <div className="counter-container">
         <p className="future-message">Counting will start soon!</p>
@@ -23,38 +46,40 @@ const Counter = () => {
     );
   }
 
-  // Calculate time components
-  const milliseconds = elapsed % 1000;
-  const totalSeconds = Math.floor(elapsed / 1000);
-  const seconds = totalSeconds % 60;
-  const totalMinutes = Math.floor(totalSeconds / 60);
-  const minutes = totalMinutes % 60;
-  const totalHours = Math.floor(totalMinutes / 60);
-  const hours = totalHours % 24;
-  const days = Math.floor(totalHours / 24);
-
   return (
     <div className="counter-container">
       <div className="counter">
-        <div className="time-segment">
-          <span className="number">{days}</span>
-          <span className="label">Days</span>
+        <div className="date-section">
+          <div className="time-segment">
+            <span className="number">{elapsed.years}</span>
+            <span className="label">Years</span>
+          </div>
+          <div className="time-segment">
+            <span className="number">{elapsed.months}</span>
+            <span className="label">Months</span>
+          </div>
+          <div className="time-segment">
+            <span className="number">{elapsed.days}</span>
+            <span className="label">Days</span>
+          </div>
         </div>
-        <div className="time-segment">
-          <span className="number">{hours}</span>
-          <span className="label">Hours</span>
-        </div>
-        <div className="time-segment">
-          <span className="number">{minutes}</span>
-          <span className="label">Minutes</span>
-        </div>
-        <div className="time-segment">
-          <span className="number">{seconds}</span>
-          <span className="label">Seconds</span>
-        </div>
-        <div className="time-segment">
-          <span className="number">{milliseconds}</span>
-          <span className="label">Milliseconds</span>
+        <div className="time-section">
+          <div className="time-segment">
+            <span className="number">{elapsed.hours}</span>
+            <span className="label">Hours</span>
+          </div>
+          <div className="time-segment">
+            <span className="number">{elapsed.minutes}</span>
+            <span className="label">Minutes</span>
+          </div>
+          <div className="time-segment">
+            <span className="number">{elapsed.seconds}</span>
+            <span className="label">Seconds</span>
+          </div>
+          <div className="time-segment">
+            <span className="number">{elapsed.milliseconds}</span>
+            <span className="label">Milliseconds</span>
+          </div>
         </div>
       </div>
     </div>
