@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px; /* Added padding for better spacing on smaller screens */
 }
 
 .counter {
@@ -17,6 +18,7 @@
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: transform 0.3s;
+  max-width: 90vw; /* Ensure the counter doesn't overflow on very small screens */
 }
 
 .counter:hover {
@@ -27,13 +29,15 @@
 .time-section {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 20px; /* Reduced gap for smaller screens */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 .time-segment {
   text-align: center;
   color: #ffffff;
   transition: transform 0.3s, color 0.3s;
+  min-width: 80px; /* Ensure a minimum width for each segment */
 }
 
 .time-segment:hover {
@@ -49,6 +53,13 @@
   color: #ffffff;
   text-shadow: 2px 2px #000;
   font-family: 'Montserrat', sans-serif;
+  min-width: 50px; /* Ensure numbers have enough space */
+  text-align: center;
+}
+
+/* Optional: Enhance monospace alignment for numbers */
+.number {
+  font-variant-numeric: tabular-nums;
 }
 
 .label {
@@ -62,5 +73,52 @@
   color: #ffffff;
   text-shadow: 2px 2px #ff69b4;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .counter {
+    padding: 20px 25px;
+  }
+
+  .title {
+    font-size: 3rem; /* Adjust title size for smaller screens */
+  }
+
+  .number {
+    font-size: 2rem;
+    min-width: 40px;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .time-section {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .counter {
+    padding: 15px 20px;
+  }
+
+  .number {
+    font-size: 1.8rem;
+    min-width: 35px;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .time-section {
+    gap: 10px;
+  }
+
+  .time-segment {
+    min-width: 60px;
+  }
+}

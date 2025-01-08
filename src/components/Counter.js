@@ -13,6 +13,10 @@ const Counter = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const formatNumber = (number) => {
+    return number < 10 ? `0${number}` : number;
+  };
+
   const calculateElapsed = () => {
     let elapsed = currentTime - startDate;
 
@@ -51,29 +55,29 @@ const Counter = () => {
       <div className="counter">
         <div className="date-section">
           <div className="time-segment">
-            <span className="number">{elapsed.years}</span>
+            <span className="number">{formatNumber(elapsed.years)}</span>
             <span className="label">Years</span>
           </div>
           <div className="time-segment">
-            <span className="number">{elapsed.months}</span>
+            <span className="number">{formatNumber(elapsed.months)}</span>
             <span className="label">Months</span>
           </div>
           <div className="time-segment">
-            <span className="number">{elapsed.days}</span>
+            <span className="number">{formatNumber(elapsed.days)}</span>
             <span className="label">Days</span>
           </div>
         </div>
         <div className="time-section">
           <div className="time-segment">
-            <span className="number">{elapsed.hours}</span>
+            <span className="number">{formatNumber(elapsed.hours)}</span>
             <span className="label">Hours</span>
           </div>
           <div className="time-segment">
-            <span className="number">{elapsed.minutes}</span>
+            <span className="number">{formatNumber(elapsed.minutes)}</span>
             <span className="label">Minutes</span>
           </div>
           <div className="time-segment">
-            <span className="number">{elapsed.seconds}</span>
+            <span className="number">{formatNumber(elapsed.seconds)}</span>
             <span className="label">Seconds</span>
           </div>
           <div className="time-segment">
@@ -87,4 +91,3 @@ const Counter = () => {
 };
 
 export default Counter;
-
