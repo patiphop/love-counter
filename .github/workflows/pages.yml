@@ -1,7 +1,7 @@
 # .github/workflows/pages.yml
 name: Deploy to GitHub Pages
 on:
-  push: { branches: [ main ] }
+  push: { branches: [main] }
   workflow_dispatch:
 
 permissions:
@@ -17,6 +17,9 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: npm }
       - run: npm ci
+      - name: Create .env for React
+        run: |
+          echo 'REACT_APP_START_DATE="${{ secrets.REACT_APP_START_DATE }}"' > .env
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with: { path: ./build }
