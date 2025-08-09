@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Counter.css';
+import { calculateElapsedTime } from '../utils/time';
 
 const Counter = () => {
   const startDate = new Date(process.env.REACT_APP_START_DATE).getTime();
@@ -17,29 +18,7 @@ const Counter = () => {
     return number < 10 ? `0${number}` : number;
   };
 
-  const calculateElapsed = () => {
-    let elapsed = currentTime - startDate;
-
-    if (elapsed < 0) {
-      return null;
-    }
-
-    const milliseconds = elapsed % 1000;
-    const totalSeconds = Math.floor(elapsed / 1000);
-    const seconds = totalSeconds % 60;
-    const totalMinutes = Math.floor(totalSeconds / 60);
-    const minutes = totalMinutes % 60;
-    const totalHours = Math.floor(totalMinutes / 60);
-    const hours = totalHours % 24;
-    const totalDays = Math.floor(totalHours / 24);
-    const days = totalDays % 365;
-    const years = Math.floor(totalDays / 365);
-    const months = Math.floor((totalDays % 365) / 30); // Approximation
-
-    return { years, months, days, hours, minutes, seconds, milliseconds };
-  };
-
-  const elapsed = calculateElapsed();
+  const elapsed = calculateElapsedTime(startDate, currentTime);
 
   // If the start date is in the future
   if (!elapsed) {

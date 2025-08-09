@@ -18,7 +18,8 @@
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: transform 0.3s;
-  max-width: 90vw; /* Ensure the counter doesn't overflow on very small screens */
+  width: 100%;
+  max-width: 600px;
 }
 
 .counter:hover {
@@ -46,7 +47,7 @@
 }
 
 .number {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
@@ -63,7 +64,7 @@
 }
 
 .label {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 2vw, 1rem);
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
 }
@@ -82,19 +83,6 @@
     padding: 20px 25px;
   }
 
-  .title {
-    font-size: 3rem; /* Adjust title size for smaller screens */
-  }
-
-  .number {
-    font-size: 2rem;
-    min-width: 40px;
-  }
-
-  .label {
-    font-size: 0.9rem;
-  }
-
   .time-section {
     gap: 15px;
   }
@@ -103,15 +91,6 @@
 @media (max-width: 480px) {
   .counter {
     padding: 15px 20px;
-  }
-
-  .number {
-    font-size: 1.8rem;
-    min-width: 35px;
-  }
-
-  .label {
-    font-size: 0.8rem;
   }
 
   .time-section {
