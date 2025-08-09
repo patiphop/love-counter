@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - name: Create .env for React
         run: |
-          echo 'REACT_APP_START_DATE="${{ secrets.REACT_APP_START_DATE }}"' > .env
+          echo 'REACT_APP_START_DATE="2024-12-25T19:05:00Z"' > .env
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with: { path: ./build }
