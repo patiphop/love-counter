@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/love-counter/static/css/main.4abe6a2d.css",
-    "main.js": "/love-counter/static/js/main.15d09b6e.js",
+    "main.css": "/love-counter/static/css/main.3ee8dd3f.css",
+    "main.js": "/love-counter/static/js/main.b6d26ad4.js",
     "index.html": "/love-counter/index.html",
-    "main.4abe6a2d.css.map": "/love-counter/static/css/main.4abe6a2d.css.map",
-    "main.15d09b6e.js.map": "/love-counter/static/js/main.15d09b6e.js.map"
+    "main.3ee8dd3f.css.map": "/love-counter/static/css/main.3ee8dd3f.css.map",
+    "main.b6d26ad4.js.map": "/love-counter/static/js/main.b6d26ad4.js.map"
   },
   "entrypoints": [
-    "static/css/main.4abe6a2d.css",
-    "static/js/main.15d09b6e.js"
+    "static/css/main.3ee8dd3f.css",
+    "static/js/main.b6d26ad4.js"
   ]
 }
