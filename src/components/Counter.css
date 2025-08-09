@@ -1,103 +1,91 @@
-/* src/components/Counter.css */
-
 .counter-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Added padding for better spacing on smaller screens */
+  padding: 20px;
+  width: 100%;
 }
 
 .counter {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 20px;
-  padding: 25px 30px;
-  border: 3px solid #ffffff;
+  padding: 28px 30px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s;
   width: 100%;
-  max-width: 600px;
-}
+  max-width: 720px;
 
-.counter:hover {
-  transform: scale(1.05);
+  /* การ์ดทึบขึ้น + ขอบไล่สี */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)) padding-box,
+    linear-gradient(135deg, var(--accent1), var(--accent2)) border-box;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px) saturate(140%);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
+.counter::before {
+  /* เติมชั้นทึบใต้กระจกเพื่อเพิ่มคอนทราสต์ */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--card-bg);
+  border-radius: 18px;
+  z-index: -1;
+}
+.counter:hover { transform: translateY(-2px); }
+.counter { position: relative; }
 
 .date-section,
 .time-section {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Reduced gap for smaller screens */
-  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 16px;
 }
 
 .time-segment {
   text-align: center;
-  color: #ffffff;
-  transition: transform 0.3s, color 0.3s;
-  min-width: 80px; /* Ensure a minimum width for each segment */
+  color: var(--text);
+  padding: 16px 12px;
+  border-radius: 16px;
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12) inset, 0 4px 14px rgba(0,0,0,.08);
 }
-
 .time-segment:hover {
-  transform: scale(1.2);
-  color: #ff69b4;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
 }
 
 .number {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  font-weight: bold;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.1;
   display: block;
-  margin-bottom: 5px;
-  color: #ffffff;
-  text-shadow: 2px 2px #000;
-  font-family: 'Montserrat', sans-serif;
-  min-width: 50px; /* Ensure numbers have enough space */
-  text-align: center;
-}
-
-/* Optional: Enhance monospace alignment for numbers */
-.number {
+  margin-bottom: 6px;
   font-variant-numeric: tabular-nums;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* เพิ่มเงาให้ตัวเลขเด้งจากพื้นหลัง */
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
 }
 
 .label {
-  font-size: clamp(0.8rem, 2vw, 1rem);
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(.78rem, 2vw, .95rem);
+  color: var(--muted);
+  letter-spacing: .3px;
+  text-transform: uppercase;
 }
 
 .future-message {
-  font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 2px 2px #ff69b4;
-  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  color: var(--text);
   text-align: center;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .counter {
-    padding: 20px 25px;
-  }
-
-  .time-section {
-    gap: 15px;
-  }
-}
-
 @media (max-width: 480px) {
-  .counter {
-    padding: 15px 20px;
-  }
-
-  .time-section {
-    gap: 10px;
-  }
-
-  .time-segment {
-    min-width: 60px;
-  }
+  .counter { padding: 18px; }
 }
